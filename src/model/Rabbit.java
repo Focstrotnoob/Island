@@ -1,11 +1,11 @@
 package model;
 
-public class Caterpillar extends Herbivore{
-    private double health = 0;
-    final static double WEIGHT = 0.01;
-    final static int MAX_ANIMAL_ON_ONE_AREA = 1000;
+public class Rabbit extends Herbivore{
+    private double health = 0.45;
+    final static double WEIGHT = 2.0;
+    final static int MAX_ANIMAL_ON_ONE_AREA = 150;
 
-    public Caterpillar(String name) {
+    public Rabbit(String name) {
         super(name);
     }
     @Override
@@ -25,5 +25,6 @@ public class Caterpillar extends Herbivore{
         return MAX_ANIMAL_ON_ONE_AREA;
     }
     public void eat() {
+
     }
 }
