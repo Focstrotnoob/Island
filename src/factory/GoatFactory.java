@@ -1,11 +1,15 @@
 package factory;
 
 import model.*;
+import resources.PropsUtil;
 
-public class GoatFactory implements ThreadFactory {
+import java.util.Random;
+
+public class GoatFactory implements ResidentsOfTheIslandFactory {
+    Random r = new Random();
     @Override
-    public Thread create(String name) {
-        return new Thread(new Goat(name));
+    public ResidentsOfTheIsland create(String name) {
+        return new Goat(r.nextInt(PropsUtil.SIDE_X) + 1, r.nextInt(PropsUtil.SIDE_Y) + 1, name);
     }
 
 }

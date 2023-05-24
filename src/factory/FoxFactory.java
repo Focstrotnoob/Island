@@ -1,11 +1,15 @@
 package factory;
 
 import model.*;
+import resources.PropsUtil;
 
-public class FoxFactory implements ThreadFactory {
+import java.util.Random;
+
+public class FoxFactory implements ResidentsOfTheIslandFactory {
+    Random r = new Random();
     @Override
-    public Thread create(String name) {
-        return new Thread(new Fox(name));
+    public ResidentsOfTheIsland create(String name) {
+        return new Fox(r.nextInt(PropsUtil.SIDE_X) + 1, r.nextInt(PropsUtil.SIDE_Y) + 1, name);
     }
 
 }

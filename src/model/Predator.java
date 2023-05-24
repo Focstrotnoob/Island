@@ -3,29 +3,8 @@ package model;
 import exception.InvalidEatingException;
 
 public abstract class Predator extends Animal{
-    public Predator(String name) {
-        super(name);
+    public Predator(int x, int y, String name) {
+        super(x, y, name);
     }
-    @Override
-    public void run() {
-        System.out.println("bear");
-    }
-    @Override
-    public void eat(ResidentsOfTheIsland residentsOfTheIsland) {
-        if (residentsOfTheIsland instanceof Animal){
-            System.out.println(this.getClass() + " eating animal" );
-            ((Animal) residentsOfTheIsland).death();
-        }
-        else {
-            throw new InvalidEatingException("Хищники не могу есть растения");
-        }
-    }
-    public void move(){
-        System.out.println("Move");
-    }
-    public void death(){
-        System.out.println("The animal died");
-    }
-
-
+        // It's class needs for right realize method eat
 }
