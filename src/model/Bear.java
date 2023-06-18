@@ -10,11 +10,14 @@ public class Bear extends Predator {
     private double health = 80.0;
     final static double WEIGHT = 500.0;
     final static int MAX_ANIMAL_ON_ONE_AREA = 5;
+    final static int MAX_LENGTH_MOVE = 3;
+    private boolean isAlive = true;
 
     public Bear(int x, int y, String name) {
         super(x, y, name);
     }
 
+    @Override
     public String getAnimalType() {
         String animalType = "bear";
         return animalType;
@@ -45,19 +48,33 @@ public class Bear extends Predator {
         return MAX_ANIMAL_ON_ONE_AREA;
     }
 
-    public void move() {
-        int r = ThreadLocalRandom.current().nextInt(1, 4);
-        super.move(r);
-        this.setHealth(getHealth() - (this.getMaxHealth() / 10));
-        if (getHealth() <= 0) {
-            this.death("died of starvation");
-        }
+    @Override
+    public int getNumbSteps() {
+        int r = ThreadLocalRandom.current().nextInt(1, MAX_LENGTH_MOVE + 1);
+        return r;
     }
 
-    public Bear reproduction() {
-        Random r = new Random();
-        return new Bear(this.getX(), this.getY(), "Descendant of the " + this.getName());
+    @Override
+    public synchronized boolean getIsAlive() {
+        return isAlive;
     }
+
+    @Override
+    public synchronized void setIsAlive(boolean m) {
+        isAlive = m;
+    }
+
+//    @Override
+//    public void reproduction() {
+//        super.reproduction();
+//        if (getName().equals(" little #1")){
+//            System.out.println("the " + getName() + " reproduction");
+//            GameField.field.get(this.getCoordinate()).animals.add(new Bear(this.getX(), this.getY(), " little " + getName() + "a") );
+//        } else {
+//            System.out.println("the " + getName() + " reproduction");
+//            GameField.field.get(this.getCoordinate()).animals.add(new Bear(this.getX(), this.getY(), " little " + this.getName()));
+//        }
+//    }
 
     @Override
     public String toString() {

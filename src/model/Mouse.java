@@ -6,11 +6,14 @@ public class Mouse extends Herbivore {
     private double health = 0.01;
     final static double WEIGHT = 0.05;
     final static int MAX_ANIMAL_ON_ONE_AREA = 500;
+    final static int MAX_LENGTH_MOVE = 3;
+    private boolean isAlive = true;
 
     public Mouse(int x, int y, String name) {
         super(x, y, name);
     }
 
+    @Override
     public String getAnimalType() {
         String animalType = "mouse";
         return animalType;
@@ -41,17 +44,23 @@ public class Mouse extends Herbivore {
         return MAX_ANIMAL_ON_ONE_AREA;
     }
 
-    public void move() {
-        int r = ThreadLocalRandom.current().nextInt(1, 2);
-        super.move(r);
-        this.setHealth(getHealth() - (this.getMaxHealth() / 10));
-        if (getHealth() <= 0) {
-            this.death("died of starvation");
-        }
+    @Override
+    public int getNumbSteps() {
+        int r = ThreadLocalRandom.current().nextInt(1, MAX_LENGTH_MOVE + 1);
+        return r;
     }
-
     public void eat() {
         // needed override
+    }
+
+    @Override
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+
+    @Override
+    public void setIsAlive(boolean m) {
+        isAlive = m;
     }
 
     @Override

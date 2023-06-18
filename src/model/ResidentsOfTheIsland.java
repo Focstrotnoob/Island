@@ -95,10 +95,12 @@ public abstract class ResidentsOfTheIsland implements Runnable {
 //    }
 
     @Override
-    public void run() {
-    }
+    public abstract void run();
+
     public abstract void death(String message);
+
     public abstract double getWeight();
+
     public abstract int getMaxAnimalOnOneArea();
 
     public abstract double getHealth();
@@ -108,9 +110,13 @@ public abstract class ResidentsOfTheIsland implements Runnable {
     public double getMaxHealth() {
         return 0;
     }
-    public String getAnimalType(){
+
+    public String getAnimalType() {
         return "Null";
     }
+
     public abstract String getName();
+
+    public abstract String getCoordinate();
 }
 

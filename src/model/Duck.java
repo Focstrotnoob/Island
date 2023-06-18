@@ -6,11 +6,14 @@ public class Duck extends Herbivore {
     double health = 0.15;
     final static double WEIGHT = 1.0;
     final static int MAX_ANIMAL_ON_ONE_AREA = 200;
+    final static int MAX_LENGTH_MOVE = 3;
+    private boolean isAlive = true;
 
     public Duck(int x, int y, String name) {
         super(x, y, name);
     }
 
+    @Override
     public String getAnimalType() {
         String animalType = "duck";
         return animalType;
@@ -41,19 +44,27 @@ public class Duck extends Herbivore {
         return MAX_ANIMAL_ON_ONE_AREA;
     }
 
-    public void move() {
-        int r = ThreadLocalRandom.current().nextInt(1, 5);
-        super.move(r);
-        this.setHealth(getHealth() - (this.getMaxHealth() / 10));
-        if (getHealth() <= 0 ){
-            this.death("died of starvation");
-        }
+    @Override
+    public int getNumbSteps() {
+        int r = ThreadLocalRandom.current().nextInt(1, MAX_LENGTH_MOVE + 1);
+        return r;
     }
 
     @Override
-    public void eat(ResidentsOfTheIsland residentsOfTheIsland) {
-        // needed override
+    public boolean getIsAlive() {
+        return isAlive;
     }
+
+    @Override
+    public void setIsAlive(boolean m) {
+        isAlive = m;
+    }
+
+//    @Override
+//    public void eat(ResidentsOfTheIsland residentsOfTheIsland) {
+//        System.out.println("it's method Duck's");
+//        // needed override
+//    }
 
     @Override
     public String toString() {

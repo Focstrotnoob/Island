@@ -6,11 +6,14 @@ public class Eagle extends Predator {
     private double health = 1.0;
     final static double WEIGHT = 6.0;
     final static int MAX_ANIMAL_ON_ONE_AREA = 20;
+    final static int MAX_LENGTH_MOVE = 3;
+    private boolean isAlive = true;
 
     public Eagle(int x, int y, String name) {
         super(x, y, name);
     }
 
+    @Override
     public String getAnimalType() {
         String animalType = "eagle";
         return animalType;
@@ -41,14 +44,23 @@ public class Eagle extends Predator {
         return MAX_ANIMAL_ON_ONE_AREA;
     }
 
-    public void move() {
-        int r = ThreadLocalRandom.current().nextInt(1, 4);
-        super.move(r);
-        this.setHealth(getHealth() - (this.getMaxHealth() / 10));
-        if (getHealth() <= 0) {
-            this.death("died of starvation");
-        }
+    @Override
+    public int getNumbSteps() {
+        int r = ThreadLocalRandom.current().nextInt(1, MAX_LENGTH_MOVE + 1);
+        return r;
     }
+
+    @Override
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+
+    @Override
+    public void setIsAlive(boolean m) {
+        isAlive = m;
+    }
+
+
 
     @Override
     public String toString() {

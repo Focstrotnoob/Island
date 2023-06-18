@@ -47,17 +47,17 @@ public class EatingLogic {
         chanceEating.put("rabbit" + "plants", 100);
         chanceEating.put("goat" + "plants", 100);
         chanceEating.put("sheep" + "plants", 100);
-        chanceEating.put("buffalo" + "plats", 100);
-        chanceEating.put("caterpillar" + "plats", 100);
+        chanceEating.put("buffalo" + "plants", 100);
+        chanceEating.put("caterpillar" + "plants", 100);
 
-        chanceEating.put("mouse" + "plats", 100);
+        chanceEating.put("mouse" + "plants", 100);
         chanceEating.put("mouse" + "caterpillar", 90);
 
-        chanceEating.put("boar" + "plats", 100);
+        chanceEating.put("boar" + "plants", 100);
         chanceEating.put("boar" + "mouse", 50);
         chanceEating.put("boar" + "caterpillar", 90);
 
-        chanceEating.put("duck" + "plats", 100);
+        chanceEating.put("duck" + "plants", 100);
         chanceEating.put("duck" + "caterpillar", 100);
 
 

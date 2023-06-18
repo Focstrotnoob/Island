@@ -12,9 +12,7 @@ public class GameField {
             for (int i = 1; i <= x; i++) {
                 for (int j = 1; j <= y; j++) {
                     field.put(i + "*" + j, new Cell(i, j));
-                    //System.out.print("new Cell: " + i + "x" + j + " ");
                 }
-                //System.out.println();
             }
         }
 

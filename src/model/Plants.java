@@ -7,6 +7,7 @@ public class Plants extends ResidentsOfTheIsland {
     static final double HEALTH = 1.0;
     final static double WEIGHT = 1.0;
     final static int MAX_ANIMAL_ON_ONE_AREA = 200;
+    private boolean isAlive = true;
 
     public Plants(int x, int y, String plants1) {
         this.name = plants1;
@@ -14,6 +15,7 @@ public class Plants extends ResidentsOfTheIsland {
         this.y = y;
     }
 
+    @Override
     public String getAnimalType() {
         String animalType = "plants";
         return animalType;
@@ -54,5 +56,24 @@ public class Plants extends ResidentsOfTheIsland {
 
     @Override
     public void death(String message) {
+        System.out.println("DIE");
+    }
+
+    @Override
+    public void run() {
+        System.out.println("plants");
+    }
+
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+
+    public void setIsAlive(boolean m) {
+        isAlive = m;
+    }
+
+    @Override
+    public String toString() {
+        return "\uD83C\uDF3F" + getHealth() + "||Coord=" + this.getCoordinate() + "||" + this.getName();
     }
 }

@@ -1,6 +1,10 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Cell {
 
@@ -24,11 +28,12 @@ public class Cell {
         return x + "*" + y;
     }
 
-    public ArrayList<ResidentsOfTheIsland> animals = new ArrayList<>();
+    public List<ResidentsOfTheIsland> animals = new CopyOnWriteArrayList<>();
+
 
     @Override
     public String toString() {
-        return " // animals; " + animals.toString();
+        return "// animals; " + animals.toString();
     }
 
 

@@ -7,11 +7,14 @@ public class Deer extends Herbivore {
     private double health = 50.0;
     final static double WEIGHT = 300.0;
     final static int MAX_ANIMAL_ON_ONE_AREA = 20;
+    final static int MAX_LENGTH_MOVE = 3;
+    private boolean isAlive = true;
 
     public Deer(int x, int y, String name) {
         super(x, y, name);
     }
 
+    @Override
     public String getAnimalType(){
         String animalType = "deer";
         return animalType;
@@ -42,13 +45,20 @@ public class Deer extends Herbivore {
         return MAX_ANIMAL_ON_ONE_AREA;
     }
 
-    public void move() {
-        int r = ThreadLocalRandom.current().nextInt(1, 5);
-        super.move(r);
-        this.setHealth(getHealth() - (getMaxHealth() / 10));
-        if (getHealth() <= 0) {
-            this.death("died of starvation");
-        }
+    @Override
+    public int getNumbSteps() {
+        int r = ThreadLocalRandom.current().nextInt(1, MAX_LENGTH_MOVE + 1);
+        return r;
+    }
+
+    @Override
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+
+    @Override
+    public void setIsAlive(boolean m) {
+        isAlive = m;
     }
 
     @Override
